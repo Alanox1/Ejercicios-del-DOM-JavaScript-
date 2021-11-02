@@ -1,0 +1,650 @@
+
+
+body{
+    overflow-x: hidden; /*IMPORTANTE , si la saco se genera la barra de scroll horizontal*/
+    margin: 0;
+    
+}
+:root{
+    --font-size : 16px;
+    --main-color: #f7df13;
+    --main-font : sans-serif;
+    --second-color  : #222;
+    --main-modal-color : rgba(247,222,30,0.85);
+    --second-modal-color : rgba(34,34,34,0.85) ;
+    --container-width : 1200px
+}
+html{
+    scroll-behavior: smooth; /*IMPORTANTE */
+    box-sizing: border-box;
+    font-family: var(--main-font);
+
+}
+*,
+*:after,
+*:before{
+box-sizing: inherit;
+}  
+img{
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+/*MENU HAMBURGUESA*/
+header{
+    background-color: var(--main-color);
+    position: sticky;
+    color: var(--second-modal-color);
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 1rem;
+    z-index: 997;
+}  
+h1{
+    margin: 0 auto;
+    text-align: center;
+}
+.panel{
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.644);
+    margin: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 998;
+    transition: 0.3s all ease;
+    transform: translateY(-200%);
+    overflow-y: auto;
+    overflow-x: hidden;
+  
+}
+.panel ul{
+   padding: 0;
+   width: inherit;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+   text-align: center;
+
+}
+.ul{
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+.panel .ul a{
+    width: inherit;
+    text-decoration: none;
+    color: var(--main-color);
+    font-size: 1.5rem;
+    display: block;
+    padding: 30px 0px;
+    transition: 0.3s all ease;
+}
+
+.ul a:hover{
+    background-color:var(--main-modal-color);
+    color: var(--second-color);
+   }
+.esconder{
+   transform: translateY(0);
+   
+}
+
+section{
+    padding: 2rem;
+    padding-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    min-height: 100vh;
+    max-width: var(--container-width);
+    text-align: center;
+}
+#boton{
+    position: fixed;
+    bottom: 2vh;
+    right: 2vw;
+    z-index: 999;
+    background-color: var(--main-color);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-reloj{
+    margin: 0px auto;
+    width: 200px;
+    height: 200px;
+}
+
+.alarma-contenedor{
+   display: flex;
+   width: 200px;
+
+    margin: auto;
+}
+
+#activar-reloj,
+#desactivar-reloj{
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: var(--main-modal-color);
+    border : 1px solid black;
+}
+#activar-reloj:hover,
+#desactivar-reloj:hover{
+    background-color: var(--main-color);
+    color : var(--second-color)
+}
+#encender-alarma,
+#apagar-alarma{
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: rgb(94, 188, 243);
+    border: 1px solid black;
+}
+#encender-alarma:hover,
+#apagar-alarma:hover{
+    background-color: rgb(81, 181, 240);
+}
+
+
+#seccion-11 h2 {
+    color: var(--main-color);
+    font-size: 2rem;
+}
+.players li{
+    list-style: none;
+    font-size: 1.2rem;
+    margin: 8px 0px;
+}
+.sorteo-boton{
+    background-color: rgb(78, 133, 235);
+    padding: 10px 20px;
+    border: thin solid black;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 300ms ease-in;
+    margin-left: 30px;
+}
+.sorteo-boton:hover{
+    background-color:rgb(54, 118, 236)
+}
+
+.stage{
+    display: flex;
+    min-height: 50vh;
+    background-color: var(--second-modal-color);
+}
+.ball{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin: auto;
+   background-color: var(--main-color);
+}
+
+.escenario{
+    display: flex;
+    min-height: 70vh;
+    background-color: var(--second-modal-color);
+}
+.bola2{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin: auto;
+   background-color: var(--main-color);
+}
+
+
+
+
+/* SCROLL BOTTON*/
+.scroll {
+    position: fixed;
+    bottom: 2vh;
+    right: calc(5rem + 1vw); /*PARA QUE NO SE PEGUE AL OTRO BOTON DE AL LADO*/
+    z-index: 999;
+    background-color: var(--main-color);
+    color: var(--second-color);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+   transition: all 300ms ease-out;
+   border: none;
+   font-size: 2rem;
+   visibility: hidden;/*IMPORTANTE*/
+}
+.scroll:hover {
+    background-color: var(--second-color);
+    color: var(--main-color);
+    cursor: pointer;
+}
+.mostrar {
+    visibility: visible; /*IMPORTANTE*/
+    opacity: 1;
+}
+.darkmode-button{
+    position: fixed;
+    left: 2vh;
+    bottom: 2vw;
+    z-index: 999;
+    background-color: var(--main-color);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 2rem;
+}
+.darkmode-button:hover {
+    cursor: pointer;
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+.darkmode{
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+
+
+
+/*darkmode JON*/
+
+.darkmode-theme{
+    position: fixed;
+    left: 1vw;
+    bottom: 2vh;
+    z-index: 999;
+    background-color: var(--main-color);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 2rem;
+}
+.dark-mode{
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+.ancho{
+    padding: 5px 20px;
+    color: var(--second-color);
+    border: none;
+    border-bottom:  1px solid black;
+    background-color: rgb(81, 181, 240);
+    outline: none;
+}
+.ancho{
+    margin: 10px 0px;
+}
+.boton-form{
+    margin: 5px;
+}
+#form input:focus{
+    border: none;
+    border-bottom: 2px solid var(--main-modal-color);
+    outline: none;
+}
+.boton-form{
+    background-color: var(--main-color);
+    padding: 5px 20px;
+    border: 1px solid var(--second-modal-color);
+    transition: all 300ms ease-out;
+}
+.boton-form:hover{
+    background-color:rgb(255, 115, 0);
+    border: 1px solid var(--second-color);
+}
+.verde{
+background-color: green;
+display: block;
+width: 100%;
+padding: 5px 10px;
+}
+.roja{
+background-color: red;
+
+width: 100%;
+padding: 5px 10px;
+}
+
+
+.online,
+.offline {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: #1b5e20 ;
+    color: #fff;
+}
+.offline{
+    background-color: #b71c1c;
+}
+
+
+
+  /*Serch filters*/
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+}
+.card{
+    background-color: var(--second-color);
+    color: var(--main-color);
+    transition: all 0.3s ease-out;
+}
+.card img{
+    width: 100%;
+    height: auto;
+}
+.card figcaption{
+    padding: 1rem;
+}
+.filter{
+    /* display: none;NO es animable esta propiedad */
+    visibility: hidden;
+    opacity: 0;
+    order: 1;  /*Todas las tarjetas que se oculten se van a ir al principio*/
+}
+
+
+
+
+/*    Responsive Slider*/
+
+.slider {
+    position: relative;
+    width: 70%; /*Depende cuan ancho lo queramos nosotros*/
+    text-align: center;
+    margin: 1rem auto;
+    border: thin solid black;
+}
+.slider-slides {
+    height: 400px;
+    position: relative;
+}
+.slider-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+}
+.slider-slide img{
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+.slider-slide.active{
+    opacity: 1;
+    visibility: visible;
+}
+.slider-btns{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+   display: flex;
+   justify-content: space-between;
+   font-size: 2rem;
+   font-weight: bold;
+}
+.slider a{
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: thin solid black;
+    text-decoration: none;
+    background-color: #fff;
+    color: #000;
+    transition: all 0.3s ease;
+}
+.slider a:hover{
+    background-color: #4d4d4d;
+}
+
+
+
+
+
+/*Auto play slider*/
+.slider2 {
+    position: relative;
+    width: 70%; /*Depende cuan ancho lo queramos nosotros*/
+    text-align: center;
+    margin: 1rem auto;
+    border: thin solid black;
+}
+.slider-slides2 {
+    height: 400px;
+    position: relative;
+}
+.slider-slide2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+}
+.slider-slide2 img{
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.slider2 a{
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: thin solid black;
+    text-decoration: none;
+    background-color: #fff;
+    color: #000;
+    transition: all 0.3s ease;
+}
+.slider2 a:hover{
+    background-color: #4d4d4d;
+}
+.slider-slide2.active2{
+    opacity: 1;
+    visibility: visible;
+}
+video {
+    width: 100%;
+}
+
+
+
+
+/*CSS para menu tamaño desk*/
+@media (min-width:1024px) {
+    body{
+        display: grid;
+        grid-template-columns: 80% 20%;
+        grid-template-rows: 4rem auto;
+        grid-template-areas: "header header"
+                             "main panel";
+    }
+
+
+    .header{
+        grid-area: header;
+    }
+    main{
+        grid-area: main;
+    }
+    .panel{
+     grid-area: panel;
+     position: sticky;
+     align-self: start;
+     top: 4rem;
+     justify-content: flex-start;
+     background-color: var(--second-color);
+     transform: translateY(0) ;
+     opacity: 1;
+     visibility: visible;
+     width: 100%;
+   
+    }
+    .panel .ul{
+        justify-content: start;
+        text-align: right;
+     
+    }
+    .panel .ul a{
+        font-size: 1rem;
+       padding: 0.75rem
+    }
+    .panel .ul a:hover,
+    .panel .ul a.active{
+        color: var(--second-color);
+        background-color: var(--main-color);
+    }
+    #boton{
+        display: none;
+    }
+    .scroll{
+        right: initial; /*Como si reiniciamos la propiedad*/
+        left: calc(4.25rem + 1vw);
+    }
+}
+
+
+
+/*---------------Formulario validaciones------------*/
+.contact-form{
+    --form-ok-color : #4caf50;
+    --form-error-color : #f44336;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.contact-form > *{
+    padding: 0.5rem;
+    margin: 1rem auto;
+    display: block;
+    width: 100%;
+}
+
+.contact-form textarea{
+    resize: none;
+}
+
+.contact-form legend,
+.contact-form-response{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+.contact-form input,
+.contact-form textarea{
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+.contact-form input[type="submit"]{
+    width: 50%;
+    font-weight: bold;
+    cursor: pointer;
+}
+.contact-form *::placeholder{
+    color: #000;
+}
+.contact-form [required]:valid{
+    /*Si el valor del input es valido, lo va a poner en verde*/
+    border: thin solid var(--form-ok-color);
+}
+.contact-form [required]:invalid{
+    /*Si el valor del input es invalido, lo va a poner en rojo*/
+    border: thin solid var(--form-error-color);
+}
+.contact-form-error{
+    margin-top: -1rem;
+    font-size: 80%;
+    background-color: var(--form-error-color);
+    color: #fff;
+    transition: all 800ms ease;
+}
+.contact-form-error.is-active{
+    display: block;
+    animation: show-message 1s 1 normal 0s ease-out both;
+} 
+.none{
+    display: none;
+}
+@keyframes show-message{
+    0%{
+        visibility: hidden;
+        opacity: 0;
+    }
+    100%{
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.contact-form-loader > img{
+  width: 38px;
+  height: 38px;
+}
+
+.form-talk {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0px auto;
+}
+.form-talk input,
+.form-talk textarea {
+    margin: 10px;
+}
+.select{
+   padding: 10px 60px;
+}
